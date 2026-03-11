@@ -1,0 +1,27 @@
+@model List<Kutuphane_Otomasyonu.Models.Author>
+<h2>Yazar Listesi</h2>
+<a asp-action="Create" class="btn btn-primary">Yeni Yazar Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ad Soyad</th>
+            <th>Doğum Tarihi</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Author item in Model)
+{
+    <tr>
+        <td>@item.AuthorId</td>
+        <td>@item.FullName</td>
+        <td>@item.BirthDate.ToString("dd.MM.yyyy")</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.AuthorId" class="btn btn-warning">Düzenle</a>
+            <a asp-action="Delete" asp-route-id="@item.AuthorId" class="btn btn-danger">Sil</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

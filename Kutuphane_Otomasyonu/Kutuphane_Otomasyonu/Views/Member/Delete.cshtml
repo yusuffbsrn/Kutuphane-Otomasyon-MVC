@@ -1,0 +1,35 @@
+@model Kutuphane_Otomasyonu.Models.Member
+
+<h2>Üyeyi Sil</h2>
+
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Dikkat!</h4>
+    <p>Bu üyeyi silmek üzeresiniz. Bu işlem geri alınamaz.</p>
+</div>
+
+<div>
+    <h4>Üye Bilgileri</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Ad Soyad</dt>
+        <dd class="col-sm-10">@Model.FullName</dd>
+        
+        <dt class="col-sm-2">Telefon</dt>
+        <dd class="col-sm-10">@Model.Phone</dd>
+        
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-10">@Model.Email</dd>
+        
+        <dt class="col-sm-2">Kayıt Tarihi</dt>
+        <dd class="col-sm-10">@Model.RegisterDate.ToString("dd.MM.yyyy")</dd>
+        
+        <dt class="col-sm-2">Durum</dt>
+        <dd class="col-sm-10">@(Model.IsActive ? "Aktif" : "Pasif")</dd>
+    </dl>
+
+    <form asp-action="Delete" method="post" style="display:inline;">
+        <input type="hidden" asp-for="MemberId" />
+        <button type="submit" class="btn btn-danger">Sil</button>
+        <a asp-action="Index" class="btn btn-secondary">İptal</a>
+    </form>
+</div>

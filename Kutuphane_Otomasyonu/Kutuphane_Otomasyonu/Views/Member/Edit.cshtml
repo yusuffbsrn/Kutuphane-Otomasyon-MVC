@@ -1,0 +1,41 @@
+@model Kutuphane_Otomasyonu.Models.Member
+
+<h2>Üyeyi Düzenle</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="MemberId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+    <div class="form-group">
+        <label asp-for="FullName" class="control-label">Ad Soyad</label>
+        <input asp-for="FullName" class="form-control" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Phone" class="control-label">Telefon</label>
+        <input asp-for="Phone" class="form-control" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="Email" class="control-label">Email</label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    
+    <div class="form-group">
+        <label asp-for="RegisterDate" class="control-label">Kayıt Tarihi</label>
+        <input asp-for="RegisterDate" class="form-control" type="datetime-local" />
+        <span asp-validation-for="RegisterDate" class="text-danger"></span>
+    </div>
+    
+    <div class="form-check">
+        <input asp-for="IsActive" type="checkbox" class="form-check-input" />
+        <label asp-for="IsActive" class="form-check-label">Aktif</label>
+    </div>
+    
+    <br />
+    <button type="submit" class="btn btn-success">Güncelle</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

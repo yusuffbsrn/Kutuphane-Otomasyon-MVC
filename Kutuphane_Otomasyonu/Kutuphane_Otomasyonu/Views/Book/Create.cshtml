@@ -1,0 +1,31 @@
+@model Kutuphane_Otomasyonu.Models.Book
+
+<h2>Yeni Kitap Ekle</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PageCount"></label>
+        <input asp-for="PageCount" class="form-control" />
+        <span asp-validation-for="PageCount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="AuthorId"></label>
+        <select asp-for="AuthorId" class="form-control">
+            <option value="">Yazar Seç</option>
+            @foreach (dynamic author in ViewBag.Authors)
+            {
+                <option value="@author.AuthorId">@author.FullName</option>
+            }
+        </select>
+        <span asp-validation-for="AuthorId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+</form>

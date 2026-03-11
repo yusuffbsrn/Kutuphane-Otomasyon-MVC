@@ -1,0 +1,26 @@
+@model Kutuphane_Otomasyonu.Models.Borrow
+
+<h2>Ödünç Kaydını Sil</h2>
+
+<div>
+    <h4>Kayıt</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Kitap</dt>
+        <dd class="col-sm-10">@Model.Book?.Title</dd>
+        <dt class="col-sm-2">Üye</dt>
+        <dd class="col-sm-10">@Model.Member?.FullName</dd>
+        <dt class="col-sm-2">Ödünç Tarihi</dt>
+        <dd class="col-sm-10">@Model.BorrowDate.ToString("dd.MM.yyyy")</dd>
+        <dt class="col-sm-2">Teslim Tarihi</dt>
+        <dd class="col-sm-10">@Model.ReturnDate.ToString("dd.MM.yyyy")</dd>
+        <dt class="col-sm-2">Durum</dt>
+        <dd class="col-sm-10">@(Model.IsReturned ? "Teslim Edildi" : "Teslim Edilmedi")</dd>
+    </dl>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="BorrowId" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

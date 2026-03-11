@@ -1,0 +1,104 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Navbar: link spacing and base styles */
+.navbar .navbar-nav {
+  display: flex;
+  gap: 1.25rem; /* aralarındaki boşluğu arttırır */
+  align-items: center;
+}
+
+.navbar .nav-link {
+  color: white !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none; /* alt çizgiyi kaldır */
+  transition: color 150ms ease, transform 150ms ease;
+  padding: .25rem .5rem;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  color: white !important; /* renk değişimi yok */
+  transform: scale(1.05) translateX(-5px); /* hafif büyüme ve sola kayma */
+  background-color: rgba(255,255,255,0.03);
+  border-radius: 4px;
+}
+
+/* Brand büyüklüğünü arttır */
+.navbar .navbar-brand {
+  font-size: 1.6rem; /* biraz daha büyük */
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .navbar .navbar-nav {
+    gap: .5rem; /* küçük ekranlarda biraz daha az boşluk */
+    flex-direction: column;
+  }
+  .navbar .nav-link {
+    text-align: left;
+    width: 100%;
+    padding-left: 0;
+  }
+}
+
+/* Primary buttons (e.g. "Ekle" actions) match navbar color */
+.btn-primary {
+  background-color: rgb(53, 166, 15) !important;
+  border-color: rgb(53, 166, 15) !important;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-color: rgb(46, 144, 13) !important; /* slightly darker on hover */
+  border-color: rgb(46, 144, 13) !important;
+}
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: rgb(53, 166, 15) !important;
+  border-color: rgb(53, 166, 15) !important;
+}

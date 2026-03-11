@@ -1,0 +1,23 @@
+@model Kutuphane_Otomasyonu.Models.Author
+
+<h2>Yazar Sil</h2>
+
+<div class="alert alert-warning">
+    <p>Bu yazarı silmek istediğinizden emin misiniz?</p>
+</div>
+
+<div class="form-group">
+    <label>Ad Soyad:</label>
+    <p>@Model.FullName</p>
+</div>
+
+<div class="form-group">
+    <label>Doğum Tarihi:</label>
+    <p>@Model.BirthDate.ToString("dd.MM.yyyy")</p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="AuthorId" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>

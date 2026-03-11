@@ -1,0 +1,34 @@
+@model List<Kutuphane_Otomasyonu.Models.Borrow>
+
+<h2>Ödünç Kayıtları</h2>
+<a asp-action="Create" class="btn btn-primary">Yeni Ödünç Kaydı</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Kitap</th>
+            <th>Üye</th>
+            <th>Ödünç Tarihi</th>
+            <th>Teslim Tarihi</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.BorrowId</td>
+        <td>@(item.Book?.Title ?? "Bilinmeyen Kitap")</td>
+        <td>@(string.IsNullOrWhiteSpace(item.Member?.FullName) ? "Bilinmeyen Üye" : item.Member.FullName)</td>
+        <td>@item.BorrowDate.ToString("dd.MM.yyyy")</td>
+        <td>@item.ReturnDate.ToString("dd.MM.yyyy")</td>
+        <td>@(item.IsReturned ? "Teslim Edildi" : "Teslim Edilmedi")</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.BorrowId" class="btn btn-warning">Düzenle</a>
+            <a asp-action="Delete" asp-route-id="@item.BorrowId" class="btn btn-danger">Sil</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

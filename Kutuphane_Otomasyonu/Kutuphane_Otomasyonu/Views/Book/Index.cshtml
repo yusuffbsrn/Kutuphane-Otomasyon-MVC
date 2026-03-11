@@ -1,0 +1,28 @@
+@model List<Kutuphane_Otomasyonu.Models.Book>
+<h2>Kitap Listesi</h2>
+<a asp-action="Create" class="btn btn-primary">Yeni Kitap Ekle</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Başlık</th>
+            <th>Yazar</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (Book item in Model)
+{
+    <tr>
+        <td>@item.BookId</td>
+        <td>@item.Title</td>
+        <td>@item.Author?.FullName</td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-warning">Düzenle</a>
+            <a asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-danger">Sil</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
+

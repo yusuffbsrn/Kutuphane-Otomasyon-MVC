@@ -1,0 +1,20 @@
+@model Kutuphane_Otomasyonu.Models.Book
+
+<h2>Kitap Sil</h2>
+
+@if (Model == null)
+{
+    <div class="alert alert-danger">Silinecek kitap bulunamadı.</div>
+}
+else
+{
+    <div class="mb-3">
+        <strong>Başlık:</strong> @Model.Title<br />
+        <strong>Yazar:</strong> @Model.Author?.FullName
+    </div>
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="BookId" />
+        <button type="submit" class="btn btn-danger">Evet, sil</button>
+        <a asp-action="Index" class="btn btn-secondary">İptal</a>
+    </form>
+}

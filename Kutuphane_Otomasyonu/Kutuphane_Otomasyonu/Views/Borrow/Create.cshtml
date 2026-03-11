@@ -1,0 +1,39 @@
+@model Kutuphane_Otomasyonu.Models.Borrow
+
+<h2>Yeni Ödünç Kaydı Ekle</h2>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="BookId"></label>
+        <select asp-for="BookId" class="form-control">
+            <option value="">Kitap Seç</option>
+            @foreach (dynamic book in ViewBag.Books)
+            {
+                <option value="@book.BookId">@book.Title</option>
+            }
+        </select>
+        <span asp-validation-for="BookId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="MemberId"></label>
+        <select asp-for="MemberId" class="form-control">
+            <option value="">Üye Seç</option>
+            @foreach (dynamic member in ViewBag.Members)
+            {
+                <option value="@member.MemberId">@member.FullName</option>
+            }
+        </select>
+        <span asp-validation-for="MemberId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReturnDate"></label>
+        <input asp-for="ReturnDate" class="form-control" type="date" />
+        <span asp-validation-for="ReturnDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Kaydet</button>
+</form>
